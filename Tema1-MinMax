@@ -1,0 +1,22 @@
+-module(helloworld).
+-export([maximum/1]).
+-export([minimum/1]).
+-export([start/0]).
+
+start()-> List = [1,66,2, 33, 5], maximum(List), minimum(List).
+
+maximum([])     -> io:format("Invalid list.List cannot be empty!~n");
+maximum([H|T])  -> maximum(H, T).
+maximum(Max, [H|T])     ->
+                        if Max >= H -> maximum(Max, T);
+                            Max < H -> maximum(H, T)
+                        end;
+maximum(Max, [])        -> io:fwrite("Max is ~p~n", [Max]).
+
+minimum([])     -> io:format("Invalid list.List cannot be empty!~n");
+minimum([H|T])  -> minimum(H, T).
+minimum(Min, [H|T])     ->
+                        if Min =< H -> minimum(Min, T);
+                            Min > H -> minimum(H, T)
+                        end;
+minimum(Min, [])        -> io:fwrite("Min is ~p~n", [Min]).
